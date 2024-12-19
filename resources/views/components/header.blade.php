@@ -1,7 +1,7 @@
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
-    <form class="form-inline mr-auto">
-        <ul class="navbar-nav mr-3">
+    <form class="mr-auto form-inline">
+        <ul class="mr-3 navbar-nav">
             <li><a href="#"
                     data-toggle="sidebar"
                     class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <div class="search-icon bg-danger mr-3 text-white">
+                        <div class="mr-3 text-white search-icon bg-danger">
                             <i class="fas fa-code"></i>
                         </div>
                         Stisla Admin Template
@@ -80,7 +80,7 @@
                 </div>
                 <div class="search-item">
                     <a href="#">
-                        <div class="search-icon bg-primary mr-3 text-white">
+                        <div class="mr-3 text-white search-icon bg-primary">
                             <i class="fas fa-laptop"></i>
                         </div>
                         Create a new Homepage Design
@@ -168,7 +168,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="dropdown-footer text-center">
+                <div class="text-center dropdown-footer">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                 <div class="dropdown-list-content dropdown-list-icons">
                     <a href="#"
                         class="dropdown-item dropdown-item-unread">
-                        <div class="dropdown-item-icon bg-primary text-white">
+                        <div class="text-white dropdown-item-icon bg-primary">
                             <i class="fas fa-code"></i>
                         </div>
                         <div class="dropdown-item-desc">
@@ -195,7 +195,7 @@
                     </a>
                     <a href="#"
                         class="dropdown-item">
-                        <div class="dropdown-item-icon bg-info text-white">
+                        <div class="text-white dropdown-item-icon bg-info">
                             <i class="far fa-user"></i>
                         </div>
                         <div class="dropdown-item-desc">
@@ -205,7 +205,7 @@
                     </a>
                     <a href="#"
                         class="dropdown-item">
-                        <div class="dropdown-item-icon bg-success text-white">
+                        <div class="text-white dropdown-item-icon bg-success">
                             <i class="fas fa-check"></i>
                         </div>
                         <div class="dropdown-item-desc">
@@ -215,7 +215,7 @@
                     </a>
                     <a href="#"
                         class="dropdown-item">
-                        <div class="dropdown-item-icon bg-danger text-white">
+                        <div class="text-white dropdown-item-icon bg-danger">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                         <div class="dropdown-item-desc">
@@ -225,7 +225,7 @@
                     </a>
                     <a href="#"
                         class="dropdown-item">
-                        <div class="dropdown-item-icon bg-info text-white">
+                        <div class="text-white dropdown-item-icon bg-info">
                             <i class="fas fa-bell"></i>
                         </div>
                         <div class="dropdown-item-desc">
@@ -234,7 +234,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="dropdown-footer text-center">
+                <div class="text-center dropdown-footer">
                     <a href="#">View All <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
@@ -244,8 +244,8 @@
                 class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 <img alt="image"
                     src="{{ asset('img/avatar/avatar-1.png') }}"
-                    class="rounded-circle mr-1">
-                <div class="d-sm-none d-lg-inline-block">Hi, Ujang Maman</div>
+                    class="mr-1 rounded-circle">
+                <div class="d-sm-none d-lg-inline-block">Hi, {{ auth()->user()->name }}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
                 <div class="dropdown-title">Logged in 5 min ago</div>
@@ -262,10 +262,15 @@
                     <i class="fas fa-cog"></i> Settings
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#"
-                    class="dropdown-item has-icon text-danger">
+                <a href="#" class="dropdown-item has-icon text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
                     <i class="fas fa-sign-out-alt"></i> Logout
                 </a>
+                <form id="logout-form"
+                    action="{{ route('logout') }}"
+                    method="POST"
+                    style="display: none;">
+                    @csrf
+                </form>
             </div>
         </li>
     </ul>
